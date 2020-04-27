@@ -7,6 +7,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RequestMapping("/api/v1/user")
 @RestController
@@ -28,11 +29,11 @@ public class UserController {
     public void addUSer(@Valid @NonNull @RequestBody User user){
         userService.addUser(user.getId(), user.getName(), user.getSurname());
     }
-    @DeleteMapping(path = "{id}")
-    public int remove(@PathVariable("id") long id){
-        return userService.remove(id);
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void remove(@PathVariable("id") long id) {
+        userService.remove(id);
     }
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public User getUser(@PathVariable("id") long id){
         return userService.getUser(id);
     }
