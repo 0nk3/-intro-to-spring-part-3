@@ -7,7 +7,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.IOException;
 
 @RequestMapping("/api/v1/user")
 @RestController
