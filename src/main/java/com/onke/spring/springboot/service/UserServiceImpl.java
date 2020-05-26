@@ -12,9 +12,11 @@ import static java.lang.String.format;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class.getName());
     // constructor dependency injection
    private final FakeRepoInterface fakeRepo;
+
     @Autowired
     public UserServiceImpl(@Qualifier("fakeDAO") FakeRepoInterface fakeRepo) {
         this.fakeRepo = fakeRepo;
@@ -26,12 +28,14 @@ public class UserServiceImpl implements UserService {
         LOGGER.info(format("%s Entered", name));
         return name;
     }
+
     @Override
     public int remove(long id) {
         fakeRepo.deleteUser(id);
         LOGGER.info(format("%s removed", getUser(id) ));
         return fakeRepo.deleteUser(id);
     }
+
     @Override
     public User getUser(long id) {
         LOGGER.info("Hello " + fakeRepo.findById(id).getName());

@@ -29,10 +29,12 @@ public class UserController {
     public void addUSer(@Valid @NonNull @RequestBody User user){
         userService.addUser(user.getId(), user.getName(), user.getSurname());
     }
+
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public void remove(@PathVariable("id") long id) {
         userService.remove(id);
     }
+
     @GetMapping(path = "/{id}")
     public User getUser(@PathVariable("id") long id){
         return userService.getUser(id);

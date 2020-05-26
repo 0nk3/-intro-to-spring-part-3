@@ -22,6 +22,7 @@ public class FakeRepo implements FakeRepoInterface {
         users.add(new User(id, name, surname));
         LOGGER.info(format("name : %s", name));
     }
+
     // find a user given an id
     @Override
     public User findById(long id) {
@@ -34,12 +35,14 @@ public class FakeRepo implements FakeRepoInterface {
         LOGGER.error("User Not Found");
         return null;
     }
+
     // remove a user given an id
     @Override
     public int deleteUser(long id) {
         users.removeIf(user -> user.getId() == id);
         return 0;
     }
+
     // print out user information
     @Override
     public String toString() {
